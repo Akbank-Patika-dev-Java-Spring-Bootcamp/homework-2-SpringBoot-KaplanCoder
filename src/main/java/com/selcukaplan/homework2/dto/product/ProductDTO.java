@@ -1,4 +1,4 @@
-package com.selcukaplan.homework2.dto;
+package com.selcukaplan.homework2.dto.product;
 
 public record ProductDTO(Long id,
                          String productName,

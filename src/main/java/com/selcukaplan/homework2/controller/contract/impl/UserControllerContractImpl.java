@@ -1,9 +1,9 @@
-package com.selcukaplan.homework2.controller.contract.imp;
+package com.selcukaplan.homework2.controller.contract.impl;
 
 import com.selcukaplan.homework2.controller.contract.UserControllerContract;
 import com.selcukaplan.homework2.entity.User;
-import com.selcukaplan.homework2.exceptions.BadRequest;
-import com.selcukaplan.homework2.exceptions.NotFound;
+import com.selcukaplan.homework2.exception.BadRequest;
+import com.selcukaplan.homework2.exception.NotFound;
 import com.selcukaplan.homework2.mapper.UserMapper;
 import com.selcukaplan.homework2.service.UserEntityService;
 import com.selcukaplan.homework2.dto.user.UserDTO;
@@ -73,7 +73,7 @@ public class UserControllerContractImpl implements UserControllerContract {
     }
 
     @Override
-    public UserDTO updateUser(Long userId, UserSaveRequest saveRequest) {  // Todo: user status could be added
+    public UserDTO updateUser(Long userId, UserSaveRequest saveRequest) {  // Todo: user status could be updated
         Optional<User> userOptional = userEntityService.findById(userId);
         if (userOptional.isEmpty()) {
             throw new NotFound("User with " + userId + " id is not found!");
@@ -87,8 +87,6 @@ public class UserControllerContractImpl implements UserControllerContract {
             user.setPhoneNumber(saveRequest.phoneNumber());
         } if (saveRequest.email() != null
                 && !userEntityService.existsByEmailOrPhoneNumber(saveRequest.email(),"")) {
-            user.setEmail(saveRequest.email());
-        } if (saveRequest.email() != null) {
             user.setEmail(saveRequest.email());
         }
         return UserMapper.INSTANCE.userToUserDTO(user);

@@ -1,4 +1,4 @@
-package com.selcukaplan.homework2.dto;
+package com.selcukaplan.homework2.dto.comment;
 
 public record CommentDTO(Long id,
                          Long userId,

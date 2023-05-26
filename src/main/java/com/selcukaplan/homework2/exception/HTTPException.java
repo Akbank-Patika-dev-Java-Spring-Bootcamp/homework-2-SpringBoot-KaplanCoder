@@ -1,6 +1,5 @@
-package com.selcukaplan.homework2.exceptions;
+package com.selcukaplan.homework2.exception;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

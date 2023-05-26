@@ -1,4 +1,4 @@
-package com.selcukaplan.homework2.exceptions;
+package com.selcukaplan.homework2.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
