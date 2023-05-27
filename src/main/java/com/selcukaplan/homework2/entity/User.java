@@ -28,7 +28,7 @@ public class User extends BaseEntity {
   @Column(name = "EMAIL", length = 50, unique = true)
   private String email;
 
-  @Size(min= 10,max = 10, message = "phone number should be exact 10 characters")
+  @Size(max = 12, message = "phone number should be exact 10 characters")
   @Column(name = "PHONENUMBER", length = 10, unique = true)
   private String phoneNumber;
 

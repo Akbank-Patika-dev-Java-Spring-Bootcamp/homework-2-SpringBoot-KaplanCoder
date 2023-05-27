@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface CommentRepository extends JpaRepository<Comment,Long> {
 
-    @Query(value = "SELECT c FROM COMMENTS c where c.userId = :userId")
-    List<Comment> findCommentsByUserId(@Param("userId") Long userId);
+    @Query(value = "SELECT c FROM Comment c where c.userId = :userId")
+    List<Comment> findCommentByUserId(@Param("userId") Long userId);
 
-    @Query(value= "SELECT c FROM COMMENTS c where c.productId = :productId")
-    List<Comment> findCommentsByProductId(@Param("productId") Long productId);
+    @Query(value= "SELECT c FROM Comment c where c.productId = :productId")
+    List<Comment> findCommentByProductId(@Param("productId") Long productId);
 }

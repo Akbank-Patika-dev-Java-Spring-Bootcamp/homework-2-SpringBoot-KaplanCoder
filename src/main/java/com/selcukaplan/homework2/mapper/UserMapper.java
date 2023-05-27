@@ -5,11 +5,12 @@ import com.selcukaplan.homework2.dto.user.UserDTO;
 import com.selcukaplan.homework2.dto.user.UserSaveRequest;
 import com.selcukaplan.homework2.entity.User;
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface UserMapper {
 
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);

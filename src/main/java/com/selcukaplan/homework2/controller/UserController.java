@@ -25,16 +25,16 @@ public class UserController {
         return ResponseEntity.ok(RestResponse.of(userDTO));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<RestResponse<UserDTO>> getUserById(@PathVariable Long id) {
-        UserDTO userDTO = userControllerContract.getUser(id);
+        UserDTO userDTO = userControllerContract.getUserById(id);
         return ResponseEntity.ok(RestResponse.of(userDTO));
     }
 
 
-    @GetMapping("/{username}")
+    @GetMapping("/username/{username}") // Todo: is there a better approach to bind multiple methods to the same path?
     public ResponseEntity<RestResponse<UserDTO>> getUserByName(@PathVariable String username) {
-        UserDTO userDTO = userControllerContract.getUser(username);
+        UserDTO userDTO = userControllerContract.getUSerByUsername(username);
         return ResponseEntity.ok(RestResponse.of(userDTO));
     }
 

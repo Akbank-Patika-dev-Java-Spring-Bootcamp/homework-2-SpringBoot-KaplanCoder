@@ -3,12 +3,14 @@ package com.selcukaplan.homework2.service;
 import com.selcukaplan.homework2.dao.UserRepository;
 import com.selcukaplan.homework2.entity.User;
 import com.selcukaplan.homework2.general.BaseEntityService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 
 @Service
+@Transactional // Todo:  it resolved transaction issues. Why? will be researched
 public class UserEntityService extends BaseEntityService<User, UserRepository> {
 
 

@@ -18,10 +18,10 @@ public class CommentEntityService extends BaseEntityService<Comment, CommentRepo
 
 
     public List<Comment> findCommentsByUserId(Long userId) {
-        return repository.findCommentsByUserId(userId);
+        return repository.findCommentByUserId(userId);
     }
 
     public List<Comment> findCommentsByProductId(Long productId) {
-        return repository.findCommentsByProductId(productId);
+        return repository.findCommentByProductId(productId);
     }
 }

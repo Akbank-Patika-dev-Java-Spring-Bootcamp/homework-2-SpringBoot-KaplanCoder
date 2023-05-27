@@ -10,9 +10,9 @@ public interface UserControllerContract {
 
     List<UserDTO> findAll();
 
-    UserDTO getUser(Long userId);
+    UserDTO getUserById(Long userId);
 
-    UserDTO getUser(String username);
+    UserDTO getUSerByUsername(String username);
 
     UserDTO saveUser(UserSaveRequest saveRequest);
 

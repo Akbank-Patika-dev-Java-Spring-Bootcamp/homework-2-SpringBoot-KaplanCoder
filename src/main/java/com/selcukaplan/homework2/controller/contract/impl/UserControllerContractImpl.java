@@ -28,7 +28,7 @@ public class UserControllerContractImpl implements UserControllerContract {
     }
 
     @Override
-    public UserDTO getUser(Long userId) {
+    public UserDTO getUserById(Long userId) {
         Optional<User> userOptional = userEntityService.findById(userId);
         if (userOptional.isEmpty()) {
             throw new NotFound("User with " + userId + " id is not found!");
@@ -37,7 +37,7 @@ public class UserControllerContractImpl implements UserControllerContract {
     }
 
     @Override
-    public UserDTO getUser(String username) {
+    public UserDTO getUSerByUsername(String username) {
         Optional<User> user = userEntityService.findByUsername(username);
         if (user.isEmpty()) {
             throw new NotFound("User with " + username + " username is not found!");
@@ -51,8 +51,8 @@ public class UserControllerContractImpl implements UserControllerContract {
     public UserDTO saveUser(UserSaveRequest saveRequest) {
         String email = saveRequest.email();
         String phoneNumber= saveRequest.phoneNumber();
-        if (!userEntityService.existsByEmailOrPhoneNumber(email,phoneNumber)) {
-            throw new NotFound("User with " + email + " email and " + phoneNumber + "phone number is not found!");
+        if (userEntityService.existsByEmailOrPhoneNumber(email,phoneNumber)) {
+            throw new NotFound("User with " + email + " email and " + phoneNumber + " phone number already exist!");
         }
         User newUser = UserMapper.INSTANCE.saveRequestToUser(saveRequest);
         newUser = userEntityService.save(newUser);

@@ -5,11 +5,12 @@ import com.selcukaplan.homework2.dto.product.ProductDTO;
 import com.selcukaplan.homework2.dto.product.ProductSaveRequest;
 import com.selcukaplan.homework2.entity.Product;
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ProductMapper {
     ProductMapper INSTANCE = Mappers.getMapper(ProductMapper.class);
 
