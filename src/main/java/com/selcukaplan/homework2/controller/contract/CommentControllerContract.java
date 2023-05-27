@@ -13,6 +13,8 @@ public interface CommentControllerContract {
 
     CommentDTO saveComment(CommentSaveRequest commentSaveRequest);
 
+    CommentDTO updateComment(CommentSaveRequest commentSaveRequest); // Todo: will be implemented
+
     void deleteComment(Long commentId);
 
 
