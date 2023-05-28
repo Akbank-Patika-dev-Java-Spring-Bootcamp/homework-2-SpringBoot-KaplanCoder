@@ -6,8 +6,6 @@ package com.selcukaplan.homework2.controller;
 import com.selcukaplan.homework2.controller.contract.ProductControllerContract;
 import com.selcukaplan.homework2.dto.product.ProductSaveRequest;
 import com.selcukaplan.homework2.dto.product.ProductDTO;
-import com.selcukaplan.homework2.dto.user.UserDeleteRequest;
-import com.selcukaplan.homework2.dto.user.UserSaveRequest;
 import com.selcukaplan.homework2.general.RestResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +32,7 @@ public class ProductController {
         return ResponseEntity.ok(RestResponse.of(ProductDTO));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}")  //Todo: price could be added to the path
     public ResponseEntity<RestResponse<ProductDTO>> updatePrice(@PathVariable Long id,@RequestBody ProductSaveRequest productSaveRequest) {
         ProductDTO ProductDTO = productControllerContract.updatePrice(id,productSaveRequest.price());
         return ResponseEntity.ok(RestResponse.of(ProductDTO));

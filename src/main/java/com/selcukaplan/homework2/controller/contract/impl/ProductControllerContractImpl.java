@@ -59,6 +59,7 @@ public class ProductControllerContractImpl implements ProductControllerContract 
         }
         Product updatedProduct = productOptional.get();
         updatedProduct.setPrice(price);
+        productEntityService.save(updatedProduct);
         return ProductMapper.INSTANCE.productToProductDTO(updatedProduct);
 
     }

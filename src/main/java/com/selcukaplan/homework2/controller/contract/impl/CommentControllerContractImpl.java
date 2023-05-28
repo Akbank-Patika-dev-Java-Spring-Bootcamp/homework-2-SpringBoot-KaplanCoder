@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -22,7 +23,7 @@ public class CommentControllerContractImpl implements CommentControllerContract 
     public List<CommentDTO> getCommentsOfUser(Long userId) {
         List<Comment> comments = commentEntityService.findCommentsByUserId(userId);
         if (comments.isEmpty()) {
-            throw new NotFound("User with the " + " id does not have any comments.");
+            throw new NotFound("User with the " + userId +  " id does not have any comments.");
         }
         return CommentMapper.INSTANCE.commentsToCommentsDTOList(comments);
     }
@@ -31,7 +32,7 @@ public class CommentControllerContractImpl implements CommentControllerContract 
     public List<CommentDTO> getCommentsOfProduct(Long productId) {
         List<Comment> comments = commentEntityService.findCommentsByProductId(productId);
         if (comments.isEmpty()) {
-            throw new NotFound("Product with the " + " id does not have any comments.");
+            throw new NotFound("Product with the " + productId +  " id does not have any comments.");
         }
         return CommentMapper.INSTANCE.commentsToCommentsDTOList(comments);
     }
@@ -45,6 +46,10 @@ public class CommentControllerContractImpl implements CommentControllerContract 
 
     @Override
     public void deleteComment(Long commentId) {
+        Optional<Comment> commentOptional = commentEntityService.findById(commentId);
+        if (commentOptional.isEmpty()) {
+            throw new NotFound("Comment with the " + commentId +  " id is not found!");
+        }
         commentEntityService.delete(commentId); // Todo: condition could be added to check whether deleted or not
 
     }

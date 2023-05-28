@@ -3,6 +3,7 @@ package com.selcukaplan.homework2.service;
 import com.selcukaplan.homework2.dao.CommentRepository;
 import com.selcukaplan.homework2.entity.Comment;
 import com.selcukaplan.homework2.general.BaseEntityService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

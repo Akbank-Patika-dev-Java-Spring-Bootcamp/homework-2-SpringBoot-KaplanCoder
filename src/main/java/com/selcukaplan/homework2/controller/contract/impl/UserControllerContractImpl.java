@@ -52,7 +52,9 @@ public class UserControllerContractImpl implements UserControllerContract {
         String email = saveRequest.email();
         String phoneNumber= saveRequest.phoneNumber();
         if (userEntityService.existsByEmailOrPhoneNumber(email,phoneNumber)) {
-            throw new NotFound("User with " + email + " email and " + phoneNumber + " phone number already exist!");
+            throw new BadRequest("User with " + email + " email or " + phoneNumber + " phone number already exist!");
+        } if (userEntityService.findByUsername(saveRequest.username()).isPresent()) {
+            throw new BadRequest("User with " + saveRequest.username() + " username already exist!");
         }
         User newUser = UserMapper.INSTANCE.saveRequestToUser(saveRequest);
         newUser = userEntityService.save(newUser);
@@ -89,6 +91,7 @@ public class UserControllerContractImpl implements UserControllerContract {
                 && !userEntityService.existsByEmailOrPhoneNumber(saveRequest.email(),"")) {
             user.setEmail(saveRequest.email());
         }
+        userEntityService.save(user); // Todo: is it necessary? will be researched
         return UserMapper.INSTANCE.userToUserDTO(user);
 
     }

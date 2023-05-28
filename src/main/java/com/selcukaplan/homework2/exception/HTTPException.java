@@ -16,23 +16,14 @@ public class HTTPException extends RuntimeException {
 
     private  final HttpStatus httpStatus;
 
-    private final LocalDateTime errorDate;
 
     private final String message;
 
     public HTTPException(String message) {
-        this(HttpStatus.INTERNAL_SERVER_ERROR,LocalDateTime.now(),message);
+        this(HttpStatus.INTERNAL_SERVER_ERROR,message);
 
     }
 
-    public HTTPException(LocalDateTime errorDate,String message) {
-        this(HttpStatus.INTERNAL_SERVER_ERROR,errorDate,message);
-    }
-
-    public HTTPException(HttpStatus httpStatus,String message) {
-        this(httpStatus,LocalDateTime.now(),message);
-
-    }
 
 
 

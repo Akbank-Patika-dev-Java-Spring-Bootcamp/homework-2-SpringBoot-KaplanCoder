@@ -10,7 +10,6 @@ import java.util.Optional;
 
 
 @Service
-@Transactional // Todo:  it resolved transaction issues. Why? will be researched
 public class UserEntityService extends BaseEntityService<User, UserRepository> {
 
 

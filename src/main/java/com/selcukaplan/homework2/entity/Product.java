@@ -22,8 +22,8 @@ public class Product extends BaseEntity {
   @Column(name = "PRODUCTNAME",length = 50, nullable = false)
   private String productName;
 
-  @NotBlank
-  @Column(name = "PRICE", length = 50, nullable = false)
+
+  @Column(name = "PRICE", nullable = false)
   private Double price;
 
 
